@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsclients>
+<webservice authenticationMethod="-1" isConnectionURL="http://localhost:5555/ws/simpleOrder.ws:uiServices?WSDL" isService="simpleOrder.ws:uiServices" name="uiServices" package="caf.war.simpleOrderTasks.wsclient.simpleorder.ws.uiservices" password="{AES}Y5IgMqjfvkgbg7p5VUZztw==" requiresAuth="true" soapLibrary="wss" useNamespaceForPackage="false" username="Administrator" wsdlFile="src/caf/war/simpleOrderTasks/wsclient/simpleorder/ws/uiservices/uiServices.wsdl" wsdlURL="http://localhost:5555/ws/simpleOrder.ws:uiServices?WSDL">
+<wsproxy className="caf.war.simpleOrderTasks.wsclient.simpleorder.ws.uiservices.SimpleOrderWsUiServicesStub">
+<wsclient annotated="true" managedBean="GetProductList" operation="getProductList"/>
+<wsclient annotated="true" managedBean="GetCustomerList" operation="getCustomerList"/>
+</wsproxy>
+<generatedfile>caf/war/simpleOrderTasks/wsclient/simpleorder/ws/uiservices/SimpleOrderWsUiServicesStub.java</generatedfile>
+</webservice>
+</wsclients>

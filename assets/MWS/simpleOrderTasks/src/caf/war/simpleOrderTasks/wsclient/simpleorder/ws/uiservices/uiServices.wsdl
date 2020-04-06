@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="uiServices" targetNamespace="http://localhost/simpleOrder.ws:uiServices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapjms="http://www.w3.org/2010/soapjms/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://localhost/simpleOrder.ws:uiServices" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://localhost/simpleOrder.ws:uiServices" xmlns:tns="http://localhost/simpleOrder.ws:uiServices" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+          <xsd:element name="getCustomerList" type="tns:getCustomerList"/>
+          <xsd:element name="getCustomerListResponse" type="tns:getCustomerListResponse"/>
+          <xsd:element name="getProductList" type="tns:getProductList"/>
+          <xsd:element name="getProductListResponse" type="tns:getProductListResponse"/>
+          <xsd:complexType name="getCustomerList">
+            <xsd:sequence>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getCustomerListResponse">
+            <xsd:sequence>
+              <xsd:element name="customerListUI" nillable="true" type="tns:customerListUI"/>
+              <xsd:element name="ServiceStatus" nillable="true" type="tns:ServiceStatus"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="customerListUI">
+            <xsd:sequence>
+              <xsd:element maxOccurs="unbounded" name="Customer" nillable="true" type="tns:customer"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="customer">
+            <xsd:sequence>
+              <xsd:element name="id" nillable="true" type="xsd:string"/>
+              <xsd:element name="firstname" nillable="true" type="xsd:string"/>
+              <xsd:element name="lastname" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ServiceStatus">
+            <xsd:sequence>
+              <xsd:element name="status" nillable="true" type="xsd:string"/>
+              <xsd:element name="errorId" nillable="true" type="xsd:string"/>
+              <xsd:element name="errorText" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getProductList">
+            <xsd:sequence>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getProductListResponse">
+            <xsd:sequence>
+              <xsd:element minOccurs="0" name="productListUI" nillable="true" type="tns:productListUI"/>
+              <xsd:element minOccurs="0" name="ServiceStatus" nillable="true" type="tns:ServiceStatus"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="productListUI">
+            <xsd:sequence>
+              <xsd:element maxOccurs="unbounded" name="Product" nillable="true" type="tns:product"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="product">
+            <xsd:sequence>
+              <xsd:element name="id" nillable="true" type="xsd:string"/>
+              <xsd:element name="name" nillable="true" type="xsd:string"/>
+              <xsd:element name="price" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        	</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="uiServices_PortType_getProductListResponse">
+    <wsdl:part name="parameters" element="tns:getProductListResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="uiServices_PortType_getCustomerListResponse">
+    <wsdl:part name="parameters" element="tns:getCustomerListResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="uiServices_PortType_getCustomerList">
+    <wsdl:part name="parameters" element="tns:getCustomerList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="uiServices_PortType_getProductList">
+    <wsdl:part name="parameters" element="tns:getProductList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="uiServices_PortType">
+    <wsdl:operation name="getCustomerList">
+      <wsdl:input message="tns:uiServices_PortType_getCustomerList">
+    </wsdl:input>
+      <wsdl:output message="tns:uiServices_PortType_getCustomerListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProductList">
+      <wsdl:input message="tns:uiServices_PortType_getProductList">
+    </wsdl:input>
+      <wsdl:output message="tns:uiServices_PortType_getProductListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="simpleOrder_ws_uiServices_Binder" type="tns:uiServices_PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCustomerList">
+      <soap:operation soapAction="simpleOrder_ws_uiServices_Binder_getCustomerList" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProductList">
+      <soap:operation soapAction="simpleOrder_ws_uiServices_Binder_getProductList" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="simpleOrder.ws.uiServices">
+    <wsdl:port name="simpleOrder_ws_uiServices_Port" binding="tns:simpleOrder_ws_uiServices_Binder">
+      <soap:address location="http://localhost:5555/ws/simpleOrder.ws:uiServices/simpleOrder_ws_uiServices_Port"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

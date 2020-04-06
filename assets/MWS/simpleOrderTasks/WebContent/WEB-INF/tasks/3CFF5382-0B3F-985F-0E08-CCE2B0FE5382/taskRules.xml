@@ -1,0 +1,38 @@
+<CONFIG xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="http://www.webmethods.com/schema/xmlImport.xsd"
+    depCheck="false"
+>
+	<Mode type="sync">
+	    <!-- Setup distribution rules -->
+	    <CONTEXT alias="3CFF5382-0B3F-985F-0E08-CCE2B0FE5382.routing.rules.storage">
+	    
+	    <wm_xt_portalrules name="assign" description="" ruleEditingContextURI="3CFF5382-0B3F-985F-0E08-CCE2B0FE5382.distrib.rule.editing.context" ruleType="routing">
+	<rule name="assign" description="" ruleEditingContextURI="3CFF5382-0B3F-985F-0E08-CCE2B0FE5382.distrib.rule.editing.context" ruleType="routing">
+		<condition><boolean constant="true" displayName="boolean" description="a boolean value (true or false)" variableInfo.enabled="false"></boolean></condition>
+		<result><string constant="simpleOrderOrderer" displayName="string" description="a string value" variableInfo.enabled="false"></string></result>
+		<attributes><attribute name="taskDefinitionURI">3CFF5382-0B3F-985F-0E08-CCE2B0FE5382</attribute><attribute name="origConditionText">true</attribute><attribute name="assigneeList">assigneetype.physicalrole~&quot;simpleOrderOrderer&quot;~Role : simpleOrderOrderer~assigneeValue=&quot;simpleOrderOrderer&quot;\,assigneeLabel=simpleOrderOrderer</attribute><attribute name="ruleSet"></attribute><attribute name="origResultText">&quot;simpleOrderOrderer&quot;</attribute><attribute name="conditionJoin">0</attribute><attribute name="doNotFire">false</attribute><attribute name="ruleEditingContextID">task.rule.distribution.context</attribute><attribute name="fireOnce">true</attribute><attribute name="ruleType">routing</attribute><attribute name="distManType">none</attribute><attribute name="conditionType">true</attribute><attribute name="conditions"></attribute></attributes>
+	</rule>
+</wm_xt_portalrules></CONTEXT>
+	
+	    <!-- Setup distribution filters -->
+	    <CONTEXT alias="3CFF5382-0B3F-985F-0E08-CCE2B0FE5382.filter.rules.storage">
+	    
+	    </CONTEXT>
+	
+	    <!-- Setup trigger rules -->
+	    <CONTEXT alias="3CFF5382-0B3F-985F-0E08-CCE2B0FE5382.change.rules.storage">
+	    
+	    </CONTEXT>
+	
+	    <!-- Setup schedule rules -->
+	    <CONTEXT alias="3CFF5382-0B3F-985F-0E08-CCE2B0FE5382.schedule.rules.storage">
+	    
+	    <wm_xt_portalrules name="start" description="" ruleEditingContextURI="3CFF5382-0B3F-985F-0E08-CCE2B0FE5382.schedule.rule.editing.context" info="1" ruleType="schedule">
+	<rule name="start" description="" ruleEditingContextURI="3CFF5382-0B3F-985F-0E08-CCE2B0FE5382.schedule.rule.editing.context" ruleType="schedule">
+		<condition><and displayName="and" description="AND logical operator"><greaterThen displayName="greaterThen" description="greater then comparison"><bindingExpression constant="#{System.currentDateTime}" displayName="bindingExpression" description="an external binding expression" variableInfo.enabled="false"></bindingExpression><bindingExpression constant="#{DateEventType2.resultDateTime}" displayName="bindingExpression" description="an external binding expression" variableInfo.enabled="false"></bindingExpression></greaterThen><boolean constant="true" displayName="boolean" description="a boolean value (true or false)" variableInfo.enabled="false"></boolean></and></condition>
+		<result><semicolon displayName="semicolon" description="Multiple statement operator"><assign displayName="assign" description="Assignment"><bindingExpression constant="#{currentTask.taskInfo.customTaskID}" displayName="bindingExpression" description="an external binding expression" variableInfo.enabled="false"></bindingExpression><bindingExpression constant="#{currentTask.taskData.simpleOrder.order.customer.name}" displayName="bindingExpression" description="an external binding expression" variableInfo.enabled="false"></bindingExpression></assign><bindingExpression constant="#{currentTask.applyChangesNoAccept}" displayName="bindingExpression" description="an external binding expression" variableInfo.enabled="false"></bindingExpression></semicolon></result>
+		<attributes><attribute name="taskDefinitionURI">3CFF5382-0B3F-985F-0E08-CCE2B0FE5382</attribute><attribute name="origConditionText">(#{System.currentDateTime} &gt; #{DateEventType2.resultDateTime}) &amp;&amp; (true)</attribute><attribute name="date_event_type_date_offset_fs_bean_name">DateEventType2</attribute><attribute name="ruleSet"></attribute><attribute name="origResultText">#{currentTask.taskInfo.customTaskID} = #{currentTask.taskData.simpleOrder.order.customer.name};#{currentTask.applyChangesNoAccept}</attribute><attribute name="eventType">datetime.based</attribute><attribute name="eventTypeConditionsJoin">0</attribute><attribute name="calendarDateExprLabel"></attribute><attribute name="actionType">true</attribute><attribute name="ruleEditingContextID">task.rule.schedule.context</attribute><attribute name="checkTime">0DT00:01</attribute><attribute name="ruleType">schedule</attribute><attribute name="startTime">00:00</attribute><attribute name="daysExprLabel">0</attribute><attribute name="bizCalendarExprLabel"></attribute><attribute name="useUserPersonalCalendar">false</attribute><attribute name="hoursExprLabel">0</attribute><attribute name="minutesExprLabel">0</attribute><attribute name="actions">actiontype.updatetaskinfo.customID~#{currentTask.taskInfo.customTaskID} = #{currentTask.taskData.simpleOrder.order.customer.name}~Set Task CustomID as name~label=name\,value=#{currentTask.taskData.simpleOrder.order.customer.name}\,original.editor.type=actiontype.updatetaskinfo.customID</attribute><attribute name="eventTypeConditions"></attribute></attributes>
+	</rule>
+</wm_xt_portalrules></CONTEXT>
+	</Mode>
+</CONFIG>

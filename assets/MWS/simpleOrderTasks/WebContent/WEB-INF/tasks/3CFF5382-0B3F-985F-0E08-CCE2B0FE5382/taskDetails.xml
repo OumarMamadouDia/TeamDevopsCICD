@@ -1,0 +1,23 @@
+<CONFIG xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="http://www.webmethods.com/schema/xmlImport.xsd"
+>
+	<CONTEXT alias="3CFF5382-0B3F-985F-0E08-CCE2B0FE5382.task.app">
+		<folder name="enter Order Details" description="enter Order Details" alias="3CFF5382-0B3F-985F-0E08-CCE2B0FE5382.task.app.details.page" isTaskFolder="false">
+            <page>
+            	<row>
+            		<column>
+            			<simpleordertasks___enterorderoverview name="Task View" alias="3CFF5382-0B3F-985F-0E08-CCE2B0FE5382.task.app.details.portlet">
+                            <layout name="titlebar" value="false"/>
+                            <layout name="border" value="false"/>            			
+            			</simpleordertasks___enterorderoverview>             			
+                    </column>
+                </row>
+                <hobos/>
+            </page>
+        </folder>
+        <simpleordertasks___enterorderview name="New Task View" alias="3CFF5382-0B3F-985F-0E08-CCE2B0FE5382.task.app.details.view.portlet">
+                            <layout name="titlebar" value="false"/>
+                            <layout name="border" value="false"/>            			
+        </simpleordertasks___enterorderview> 
+    </CONTEXT>
+</CONFIG>

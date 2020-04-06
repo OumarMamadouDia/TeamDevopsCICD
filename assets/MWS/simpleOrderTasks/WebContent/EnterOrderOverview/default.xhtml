@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:caf_f="http://webmethods.com/jsf/caf/core"
+	xmlns:caf_h="http://webmethods.com/jsf/caf/html"
+	xmlns:mws_h="http://webmethods.com/jsf/mws/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition>
+	<caf_f:view pageManagedBean="EnterOrderOverviewDefaultxhtmlView"
+		preferencesBean="EnterOrderOverview">
+		<caf_f:design-time-attribute name="taskTypeID"
+			value="3CFF5382-0B3F-985F-0E08-CCE2B0FE5382"></caf_f:design-time-attribute>
+		<caf_f:design-time-attribute name="taskPortletType"
+			value="taskOverview"></caf_f:design-time-attribute>
+		<caf_f:design-time-attribute name="portlet" value="EnterOrderOverview"></caf_f:design-time-attribute>
+		<caf_h:formattedMessages></caf_h:formattedMessages>
+		<caf_h:form defaultFocus="_first" id="taskOverviewTabsForm">
+			<caf_h:toggleTabs id="taskviewselect"
+				value="#{EnterOrderOverviewDefaultxhtmlView.enterOrderOverview.currentTab}">
+				<caf_f:selectItem
+					rendered="#{EnterOrderOverviewDefaultxhtmlView.enterOrder.canUserViewTaskData}"
+					itemValue="TaskData" id="TaskDataOption"
+					itemLabel='#{activePreferencesBean.portletResourcesProvider["start.dialog.data.view"]}'></caf_f:selectItem>
+				<caf_f:selectItem
+					rendered="#{EnterOrderOverviewDefaultxhtmlView.enterOrder.canUserViewTaskInfo}"
+					itemValue="taskDetailsView" id="taskDetailsViewOption"
+					itemLabel='#{activePreferencesBean.portletResourcesProvider["start.dialog.details.view"]}'></caf_f:selectItem>
+				<caf_f:selectItem
+					rendered="#{EnterOrderOverviewDefaultxhtmlView.enterOrder.canUserViewTaskAudit}"
+					itemValue="taskAuditView" id="taskAuditViewOption"
+					itemLabel='#{activePreferencesBean.portletResourcesProvider["start.dialog.audit.view"]}'></caf_f:selectItem>
+				<caf_f:selectItem
+					rendered="#{EnterOrderOverviewDefaultxhtmlView.enterOrder.canUserViewTaskComments and EnterOrderOverviewDefaultxhtmlView.taskDisplayProvider.commentingEnabled}"
+					itemValue="taskCommentsView" id="taskCommentsViewOption"
+					itemLabel='#{activePreferencesBean.portletResourcesProvider["start.dialog.comments"]}'></caf_f:selectItem>
+				<caf_f:selectItem
+					rendered="#{EnterOrderOverviewDefaultxhtmlView.enterOrder.canUserViewCollaboration and EnterOrderOverviewDefaultxhtmlView.taskDisplayProvider.collaborationEnabled}"
+					itemValue="taskCollabView" id="taskCollabViewOption"
+					itemLabel='#{activePreferencesBean.portletResourcesProvider["start.dialog.collaboration"]}'></caf_f:selectItem>
+			</caf_h:toggleTabs>
+			<caf_h:raiseOnChange for="taskOverviewTabsForm:taskviewselect"
+				id="raiseOnChange" command="taskOverviewTabsForm:updateCurrentTab"></caf_h:raiseOnChange>
+			<caf_h:panelHideable progressFlashOnComplete="false"
+				progressDelay="9999" id="blockPanel">
+				<caf_h:asyncCommandHidden refresh="taskOverviewTabsForm:blockPanel"
+					id="updateCurrentTab"></caf_h:asyncCommandHidden>
+			</caf_h:panelHideable>
+		</caf_h:form>
+		<caf_h:panelBlock id="taskTabViewsBlock">
+			<caf_h:panelHideable refreshOnShow="true" lazy="true"
+				rendered="#{EnterOrderOverviewDefaultxhtmlView.enterOrder.canUserViewTaskData}"
+				progressFlashOnComplete="false" id="TaskData">
+				<caf_f:design-time-attribute name="rolledUp" value="false"></caf_f:design-time-attribute>
+				<mws_h:portletInclude
+					portlet="3CFF5382-0B3F-985F-0E08-CCE2B0FE5382.task.app.details.view.portlet"
+					id="taskDataPortletInclude">
+					<f:param name="taskID"
+						value="#{EnterOrderOverviewDefaultxhtmlView.enterOrderOverview.taskID}"></f:param>
+					<f:param name="cancelUrl"
+						value="#{EnterOrderOverviewDefaultxhtmlView.enterOrderOverview.cancelUrl}"></f:param>
+					<f:param name="finishUrl"
+						value="#{EnterOrderOverviewDefaultxhtmlView.enterOrderOverview.finishUrl}"></f:param>
+					<f:param name="requestID"
+						value="#{EnterOrderOverviewDefaultxhtmlView.requestID}"></f:param>
+				</mws_h:portletInclude>
+			</caf_h:panelHideable>
+			<caf_h:panelHideable refreshOnShow="true" lazy="true"
+				rendered="#{EnterOrderOverviewDefaultxhtmlView.enterOrder.canUserViewTaskAudit}"
+				progressFlashOnComplete="false" id="taskAuditView">
+				<caf_f:design-time-attribute name="rolledUp" value="false"></caf_f:design-time-attribute>
+				<mws_h:portletInclude
+					portlet="/portlet/wm_task_search___taskauditview" id="portletURL">
+					<f:param name="taskID"
+						value="#{EnterOrderOverviewDefaultxhtmlView.enterOrderOverview.taskID}"></f:param>
+					<f:param name="finishUrl"
+						value="#{EnterOrderOverviewDefaultxhtmlView.enterOrderOverview.finishUrl}"></f:param>
+					<f:param name="requestID"
+						value="#{EnterOrderOverviewDefaultxhtmlView.requestID}"></f:param>
+				</mws_h:portletInclude>
+			</caf_h:panelHideable>
+			<caf_h:panelHideable refreshOnShow="true" lazy="true"
+				rendered="#{EnterOrderOverviewDefaultxhtmlView.enterOrder.canUserViewTaskInfo}"
+				progressFlashOnComplete="false" id="taskDetailsView">
+				<caf_f:design-time-attribute name="rolledUp" value="false"></caf_f:design-time-attribute>
+				<mws_h:portletInclude
+					portlet="/portlet/wm_task_search___taskinfoview"
+					id="taskDetailsViewInclude">
+					<caf_f:design-time-attribute name="rolledUp" value="false"></caf_f:design-time-attribute>
+					<f:param name="taskID"
+						value="#{EnterOrderOverviewDefaultxhtmlView.enterOrderOverview.taskID}"></f:param>
+					<f:param name="finishUrl"
+						value="#{EnterOrderOverviewDefaultxhtmlView.enterOrderOverview.finishUrl}"></f:param>
+					<f:param name="requestID"
+						value="#{EnterOrderOverviewDefaultxhtmlView.requestID}"></f:param>
+				</mws_h:portletInclude>
+			</caf_h:panelHideable>
+			<caf_h:panelHideable refreshOnShow="true" lazy="true"
+				rendered="#{EnterOrderOverviewDefaultxhtmlView.enterOrder.canUserViewTaskComments and EnterOrderOverviewDefaultxhtmlView.taskDisplayProvider.commentingEnabled}"
+				progressFlashOnComplete="false" id="taskCommentsView">
+				<caf_f:design-time-attribute name="rolledUp" value="false"></caf_f:design-time-attribute>
+				<mws_h:portletInclude
+					portlet="/portlet/wm_comments_editor___commentseditor"
+					id="taskCommentsViewInclude">
+					<f:param name="commentsContainerID"
+						value="#{EnterOrderOverviewDefaultxhtmlView.enterOrderOverview.taskID}"></f:param>
+					<f:param name="forTask" value="true"></f:param>
+					<f:param name="finishUrl"
+						value="#{EnterOrderOverviewDefaultxhtmlView.enterOrderOverview.finishUrl}"></f:param>
+					<f:param name="requestID"
+						value="#{EnterOrderOverviewDefaultxhtmlView.requestID}"></f:param>
+				</mws_h:portletInclude>
+			</caf_h:panelHideable>
+			<caf_h:panelHideable refreshOnShow="true" lazy="true"
+				rendered="#{EnterOrderOverviewDefaultxhtmlView.enterOrder.canUserViewCollaboration and EnterOrderOverviewDefaultxhtmlView.taskDisplayProvider.collaborationEnabled}"
+				progressFlashOnComplete="false" id="taskCollabView">
+				<caf_f:design-time-attribute name="rolledUp" value="false"></caf_f:design-time-attribute>
+				<mws_h:portletInclude
+					portlet="/portlet/wm_task_search___taskprocess"
+					id="taskCollabViewInclude">
+					<f:param name="taskID"
+						value="#{EnterOrderOverviewDefaultxhtmlView.enterOrderOverview.taskID}"></f:param>
+					<f:param name="finishUrl"
+						value="#{EnterOrderOverviewDefaultxhtmlView.enterOrderOverview.finishUrl}"></f:param>
+					<f:param name="requestID"
+						value="#{EnterOrderOverviewDefaultxhtmlView.requestID}"></f:param>
+				</mws_h:portletInclude>
+			</caf_h:panelHideable>
+		</caf_h:panelBlock>
+	</caf_f:view>
+</ui:composition>
+</html>

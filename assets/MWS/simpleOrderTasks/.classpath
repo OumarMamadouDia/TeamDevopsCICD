@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jvm">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/com.softwareag.applatform.pld.is.runtimeProvider/webMethods Integration Server (Remote)">
+		<attributes>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/SoftwareAG105/common/lib/wm-caf-bpm.jar"/>
+	<classpathentry kind="lib" path="C:/SoftwareAG105/common/lib/wm-caf-client.jar"/>
+	<classpathentry kind="lib" path="C:/SoftwareAG105/common/lib/wm-caf-common.jar"/>
+	<classpathentry kind="lib" path="C:/SoftwareAG105/common/lib/wm-caf-diagnostics.jar"/>
+	<classpathentry kind="lib" path="C:/SoftwareAG105/common/lib/wm-caf-event.jar"/>
+	<classpathentry kind="lib" path="C:/SoftwareAG105/common/lib/wm-caf-event-common.jar"/>
+	<classpathentry kind="lib" path="C:/SoftwareAG105/common/lib/wm-caf-jcr.jar"/>
+	<classpathentry kind="lib" path="C:/SoftwareAG105/common/lib/wm-caf-jsf.jar"/>
+	<classpathentry kind="lib" path="C:/SoftwareAG105/common/lib/wm-caf-jsf-portlet.jar"/>
+	<classpathentry kind="lib" path="C:/SoftwareAG105/common/lib/wm-caf-rules.jar"/>
+	<classpathentry kind="lib" path="C:/SoftwareAG105/common/lib/wm-caf-script.jar"/>
+	<classpathentry kind="lib" path="C:/SoftwareAG105/common/lib/wm-caf-server.jar"/>
+	<classpathentry kind="lib" path="C:/SoftwareAG105/common/lib/wm-caf-server-common.jar"/>
+	<classpathentry kind="lib" path="C:/SoftwareAG105/common/lib/wm-caf-server-jsf.jar"/>
+	<classpathentry kind="lib" path="C:/SoftwareAG105/common/lib/wm-caf-server-schemas.jar"/>
+	<classpathentry kind="lib" path="C:/SoftwareAG105/common/lib/wm-caf-sql.jar"/>
+	<classpathentry kind="lib" path="C:/SoftwareAG105/common/lib/wm-caf-ws-glue.jar"/>
+	<classpathentry kind="lib" path="C:/SoftwareAG105/common/lib/wm-caf-ws-wss.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/com.webmethods.jst.server.wmportal.runtimeTarget/My webMethods Server"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

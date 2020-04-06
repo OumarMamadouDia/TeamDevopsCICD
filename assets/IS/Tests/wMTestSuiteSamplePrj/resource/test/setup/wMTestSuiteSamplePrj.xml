@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webMethodsTestSuite description="" name="wmTestSuite.xml">
+    <webMethodsTestCase name="sampleApplicationPkg.pub:sampleTestService">
+        <service folder="sampleApplicationPkg.pub" name="sampleTestService">
+            <input>
+                <file filename="resource/test/data/_successInput.xml"/>
+            </input>
+            <expected>
+                <file filename="resource/test/data/_successOutput.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+</webMethodsTestSuite>

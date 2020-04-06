@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:caf_f="http://webmethods.com/jsf/caf/core"
+	xmlns:caf_h="http://webmethods.com/jsf/caf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:mws_h="http://webmethods.com/jsf/mws/html">
+<ui:composition>
+	<caf_f:view pageManagedBean="CheckOrderViewDefaultxhtmlView"
+		preferencesBean="CheckOrderView">
+		<caf_f:design-time-attribute name="taskTypeID"
+			value="32F29809-D958-A997-7236-DB984E355689"></caf_f:design-time-attribute>
+		<caf_f:design-time-attribute name="taskPortletType" value="taskView"></caf_f:design-time-attribute>
+		<caf_f:design-time-attribute name="portlet" value="CheckOrderView"></caf_f:design-time-attribute>
+		<caf_h:form defaultFocus="_first" id="taskViewForm">
+			<caf_h:formattedMessages globalOnly="true">
+
+			</caf_h:formattedMessages>
+			<caf_h:panelPropertySubGroup id="taskDataSubGroup"
+				label='check Order'>
+				<f:facet name="label"></f:facet>
+				<caf_h:panelDisableable id="disableablePanel" disabled="#{not CheckOrderViewDefaultxhtmlView.checkOrder.currentUserAccepted}"><caf_h:panelPropertyLine label="Order-ID" id="propertyLine">
+						<caf_h:outputText id="htmlInputText" value="#{CheckOrderViewDefaultxhtmlView.checkOrder.taskData.simpleOrder.order.orderId}"></caf_h:outputText></caf_h:panelPropertyLine><caf_h:panelPropertyLine label="Order-Date" id="propertyLine1"><caf_h:outputText id="htmlInputText1" value="#{CheckOrderViewDefaultxhtmlView.checkOrder.taskData.simpleOrder.order.orderdate}"></caf_h:outputText></caf_h:panelPropertyLine><caf_h:panelPropertySubGroup label="Customer" id="propertySubGroup">
+					<f:facet name="label"></f:facet><caf_h:panelPropertyLine label="ID" id="propertyLine5"><caf_h:outputText id="htmlInputText4" value="#{CheckOrderViewDefaultxhtmlView.checkOrder.taskData.simpleOrder.order.customer.id}"></caf_h:outputText></caf_h:panelPropertyLine><caf_h:panelPropertyLine label="Firstname" id="propertyLine6"><caf_h:outputText id="htmlInputText5" value="#{CheckOrderViewDefaultxhtmlView.checkOrder.taskData.simpleOrder.order.customer.firstname}"></caf_h:outputText></caf_h:panelPropertyLine>
+						<caf_h:panelPropertyLine label="Lastname"
+							id="propertyLine24"><caf_h:outputText id="htmlInputText56" value="#{CheckOrderViewDefaultxhtmlView.checkOrder.taskData.simpleOrder.order.customer.lastname}"></caf_h:outputText></caf_h:panelPropertyLine>
+						
+					</caf_h:panelPropertySubGroup><caf_h:panelPropertySubGroup label="Products" id="propertySubGroup1">
+						<f:facet name="label"></f:facet>
+						<caf_h:dataAsyncTable rows="10" var="product" width="100%" headerClass="portlet-section-subheader" footerClass="portlet-section-footer" rowClasses="portlet-section-body,portlet-section-alternate" selectedRowClass="portlet-section-selected" id="asyncTable2" value="#{CheckOrderViewDefaultxhtmlView.checkProductsProvider}">
+							<f:facet name="caption"></f:facet>
+							<f:facet name="header">
+								<caf_h:outputText raw="true" id="htmlOutputText"></caf_h:outputText>
+							</f:facet>
+							<f:facet name="footer"><caf_h:dataPrevNext id="prevNext">
+									<caf_h:panelBlock style="text-align:center;" id="blockPanel">
+										<caf_h:dataTotal id="dataTotal"></caf_h:dataTotal>
+									</caf_h:panelBlock>
+								</caf_h:dataPrevNext>
+							</f:facet>
+							<f:facet name="empty"></f:facet>
+							
+							<caf_h:columnStandard id="htmlTableColumn3" sort="#{product.id}" label="Product Id" ordinal="1" allowToggle="false" ascending="true">
+
+								<f:facet name="header">
+									<caf_h:outputText value="Product Id" raw="true" id="htmlOutputText7"></caf_h:outputText>
+								</f:facet>
+								<caf_h:outputText value="#{product.id}" raw="true" id="htmlOutputText8"></caf_h:outputText>
+
+							</caf_h:columnStandard>
+							<caf_h:columnStandard id="htmlTableColumn4" label="Name">
+								<f:facet name="header">
+									<caf_h:outputText value="Name" raw="true" id="htmlOutputText9"></caf_h:outputText>
+								</f:facet>
+								<caf_h:outputText value="#{product.name}" raw="true" id="htmlOutputText10"></caf_h:outputText>
+							</caf_h:columnStandard>
+							<caf_h:columnStandard id="htmlTableColumn5" label="Price">
+								<f:facet name="header">
+									<caf_h:outputText value="Price" raw="true" id="htmlOutputText11"></caf_h:outputText>
+								</f:facet>
+								<caf_h:outputText value="#{product.price}" raw="true" id="htmlOutputText12"></caf_h:outputText>
+
+							</caf_h:columnStandard>
+						</caf_h:dataAsyncTable>
+						<caf_h:panelBlockEdge id="blockEdgePanel">
+							<f:facet name="leftEdge">
+								
+
+								</f:facet>
+							<f:facet name="rightEdge">
+								<caf_h:panelBlock id="blockPanel">
+									<caf_h:outputText value="Total-Price : " raw="true" id="htmlOutputText3"></caf_h:outputText>
+									<caf_h:outputText id="htmlInputText6" value="#{CheckOrderViewDefaultxhtmlView.total}">
+
+										<caf_f:convertFormattedDouble pattern='#{portletUserAttributes["user.default.number.format"]}'></caf_f:convertFormattedDouble>
+									</caf_h:outputText>
+								</caf_h:panelBlock>
+
+								</f:facet>
+						</caf_h:panelBlockEdge>
+
+						
+					</caf_h:panelPropertySubGroup></caf_h:panelDisableable>
+			</caf_h:panelPropertySubGroup>
+
+
+			<caf_h:panelSubmitGroup>
+
+				<f:facet name="submit">
+					<caf_h:asyncCommandButton
+						action="#{CheckOrderViewDefaultxhtmlView.submitTask}"
+						disabled="#{not CheckOrderViewDefaultxhtmlView.taskDisplayProvider.activeStatus}"
+						value='#{activePreferencesBean.portletResourcesProvider["view.task.submit"]}'
+						rendered="#{CheckOrderViewDefaultxhtmlView.checkOrder.autoAccept or CheckOrderViewDefaultxhtmlView.checkOrder.taskInfo.currentUserAccepted}"></caf_h:asyncCommandButton>
+				</f:facet>
+				<f:facet name="cancel">
+					<caf_h:commandButton
+						action="#{CheckOrderViewDefaultxhtmlView.cancelView}"
+						value='#{activePreferencesBean.portletResourcesProvider["view.task.return"]}'
+						rendered="#{not empty activePreferencesBean.finishUrl}"></caf_h:commandButton>
+				</f:facet>
+				<f:facet name="previous">
+					<caf_h:asyncCommandButton
+						action="#{CheckOrderViewDefaultxhtmlView.checkOrder.acceptTask}"
+						disabled="#{not CheckOrderViewDefaultxhtmlView.taskDisplayProvider.activeStatus}"
+						value='#{activePreferencesBean.portletResourcesProvider["view.task.accept"]}'
+						rendered="#{not CheckOrderViewDefaultxhtmlView.checkOrder.autoAccept and not CheckOrderViewDefaultxhtmlView.checkOrder.taskInfo.currentUserAccepted}"></caf_h:asyncCommandButton>
+				</f:facet>
+				<f:facet name="next">
+					<caf_h:asyncCommandButton
+						action="#{CheckOrderViewDefaultxhtmlView.checkOrder.unacceptTask}"
+						disabled="#{not CheckOrderViewDefaultxhtmlView.taskDisplayProvider.activeStatus}"
+						value='#{activePreferencesBean.portletResourcesProvider["view.task.release"]}'
+						rendered="#{not CheckOrderViewDefaultxhtmlView.checkOrder.autoAccept and CheckOrderViewDefaultxhtmlView.checkOrder.taskInfo.currentUserAccepted}"></caf_h:asyncCommandButton>
+				</f:facet>
+				
+				
+				<caf_h:commandButton action="#{CheckOrderViewDefaultxhtmlView.doOrderNotOK}" disabled="#{not CheckOrderViewDefaultxhtmlView.taskDisplayProvider.activeStatus}" value="reject Order" rendered="#{CheckOrderViewDefaultxhtmlView.checkOrder.autoAccept or CheckOrderViewDefaultxhtmlView.checkOrder.taskInfo.currentUserAccepted}"></caf_h:commandButton><caf_h:commandButton
+					action="#{CheckOrderViewDefaultxhtmlView.doOrderOK}"
+					disabled="#{not CheckOrderViewDefaultxhtmlView.taskDisplayProvider.activeStatus}"
+					value='Order OK'
+					rendered="#{CheckOrderViewDefaultxhtmlView.checkOrder.autoAccept or CheckOrderViewDefaultxhtmlView.checkOrder.taskInfo.currentUserAccepted}"></caf_h:commandButton>
+				
+			</caf_h:panelSubmitGroup>
+		</caf_h:form>
+		
+		
+	</caf_f:view>
+</ui:composition>
+</html>
